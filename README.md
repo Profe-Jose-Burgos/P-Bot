@@ -1,2 +1,3 @@
 # P-Bot
-Shubham Bhakta -Yinela Bryant -Ashley Martinez  -Victoria Lay
+Yinela Bryant -Ashley Martinez  -Victoria Lay
+#Shubham Bhakta no estuvo activo el lunes
