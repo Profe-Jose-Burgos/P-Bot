@@ -25,7 +25,7 @@ def menu_principal():
         '4': ('Opción: Métodos de pago.', accion4),
         '5': ('Opción: Cotización de envío de paquetes.', accion5),
         '6': ('Opción: Reclamos y devoluciones.', accion6),
-        '7': ('Opción: Recibe tus paquetes en tiempo EXPRESS, consulta nuestras tarifas.', accion7),
+        '7': ('Opción: Recibe tus paquetes en tiempo EXPRESS, consulta nuestras tarifas.', accion7)
 
     }
     generar_menu(menu_principal)
@@ -34,7 +34,7 @@ def menu_principal():
 # presentación del chatbot
 def mostrar_menu(menu_principal):
     print('Hola soy P-BOT, estoy aquí para asistirte. ¿Deseas ayuda con algunas de estas opciones?')
-    for clave in sorted(menu_principal):
+    for clave in menu_principal:
         print(f' {clave}) {menu_principal[clave][0]}')
 
 
