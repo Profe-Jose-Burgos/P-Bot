@@ -3,8 +3,8 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
-import re  # para limpiar los string
-from unicodedata import normalize  # normalizar caracteres del español
+import re
+from unicodedata import normalize
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
@@ -95,13 +95,7 @@ def buscar_chats():
 
 
 def normalizar(message: str):
-    # elimina tildes y normaliza para evitar problemas
-    message = re.sub(
-        r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",
-        normalize("NFD", message), 0, re.I
-    )
-
-    # -> NFC
+    message = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",normalize("NFD", message), 0, re.I)
     return normalize('NFC', message)
 
 
@@ -116,26 +110,19 @@ def identificar_mensaje():
         return normalizar(message)
 
 
-def preparar_respuesta(message: str):
+def preparar_respuesta():
     print("PREPARANDO RESPUESTA")
-
-
-    response = generar_menu(message)
+    response = menu_principal()
 
     return response
 
 
-def procesar_mensaje(message: str):
-    chatbox = driver.find_element(By.XPATH,
-                                  '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p')
-
-    response = preparar_respuesta(message)
-    print("response: ", response)
-
+def procesar_mensaje(message):
+    chatbox = driver.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div')
+    response = preparar_respuesta()
     chatbox.send_keys(response, Keys.ENTER)
     sleep(1)
     webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-
 
 def whatsapp_bot_init():
     global driver
@@ -165,7 +152,7 @@ def whatsapp_bot_init():
 # _________________________________MAIN________________________
 
 from keep_session import start_keep_session
-from chatbot import generar_menu
+from chatbot import menu_principal
 
 # Driver program
 if __name__ == '__main__':
