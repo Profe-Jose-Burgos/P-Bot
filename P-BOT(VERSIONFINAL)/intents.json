@@ -1,0 +1,89 @@
+{
+    "intents": [
+        {
+            "tag": "saludos",
+            "patterns": [
+                "hola",
+                "buenos dias",
+                "buenas tardes",
+                "buenas noches",
+                "hay alguien?",
+                "hey",
+                "saludos",
+                "buenas"
+            ],
+            "responses": [
+                "Hola!"
+            ]
+        },
+        {
+            "tag": "despedidas",
+            "patterns": [
+                "chao",
+                "adi\u00f3s",
+                "hasta luego",
+                "hasta pronto",
+                "eso es todo",
+                "hasta la proxima"
+            ],
+            "responses": [
+                "Hasta luego",
+                "Fue un placer asistirte."
+            ]
+        },
+        {
+            "tag": "agradecimientos",
+            "patterns": [
+                "gracias",
+                "muchas gracias",
+                "mil gracias",
+                "muy amable",
+                "te lo agradezco",
+                "muy agradecido",
+                "gracias por su tiempo",
+                "thank you",
+                "thanks",
+                "ty"
+            ],
+            "responses": [
+                "Fue un placer ayudarle. \n"
+            ]
+        },
+        {
+            "tag": "norespuesta",
+            "patterns": [
+                ""
+            ],
+            "responses": [
+                "No se detect\u00f3 una respuesta \n"
+            ]
+        },
+        {
+            "tag": "ayuda",
+            "patterns": [
+                "ayudame",
+                "ay\u00fadame",
+                "necesito",
+                "favor",
+                "quiero",
+                "me gustar\u00eda",
+                "me gustaria",
+                "ayuda"
+            ],
+            "responses": [
+                "Estoy aqu\u00ed para asistirte."
+            ]
+        },
+        {
+            "tag": "menu_principal",
+            "patterns": [
+                "ense\u00f1ame las opciones",
+                "otra vez",
+                "volver"
+            ],
+            "responses": [
+                "Si deseas regresar al men\u00fa principal, escribe '8'"
+            ]
+        }
+    ]
+}
