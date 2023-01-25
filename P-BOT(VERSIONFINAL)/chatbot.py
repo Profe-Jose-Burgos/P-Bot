@@ -13,14 +13,9 @@ from tensorflow.keras.models import load_model
 stemmer = SnowballStemmer('spanish')
 
 
-# model=load_model("modelo.h5")
-# intents=json.loads(open("intents.json").read())
-# palabras=pickle.load(open("palabras.pkl", "rb"))
-# clases=pickle.load(open("clases.pkl", "rb"))
 
 # __________FUNCIONES QUE EL CHATBOT LE PUEDE OFRECER A LOS CLIENTES QUE LO UTILICEN
 def menu_principal():
-    modelo=comenzar_modelo()
     menu_principal = {
         '1': ('Opción: ¿Quiénes somos?', accion1),
         '2': ('Opción: Horario de atención de nuestras sucursales.', accion2),
@@ -31,7 +26,7 @@ def menu_principal():
         '7': ('Opción: Recibe tus paquetes en tiempo EXPRESS, consulta nuestras tarifas.', accion7),
 
     }
-    generar_menu(menu_principal,modelo)
+    generar_menu(menu_principal)
 
 
 # presentación del chatbot
@@ -45,10 +40,10 @@ def ejecutar_opcion(opcion, menu_principal):
     menu_principal[opcion][1]()
 
 
-def generar_menu(menu_principal,modelo):
+def generar_menu(menu_principal):
     opcion = None
     mostrar_menu(menu_principal)
-    opcion = leer_opcion(menu_principal,modelo)
+    opcion = leer_opcion(menu_principal)
     ejecutar_opcion(opcion, menu_principal)
     print()
 
@@ -236,9 +231,9 @@ def chatbot_response(text):
     return respuesta
 
 
-def leer_opcion(menu_principal,modelo):
+def leer_opcion(menu_principal):
     while (entrada_usuario := input('Opción:')) not in menu_principal:
-        return_list=predict_class(entrada_usuario,modelo)
+        return_list=predict_class(entrada_usuario,model)
         if (entrada_usuario == '8'):
             generar_menu(menu_principal)
         elif  len(return_list)>0:
@@ -258,5 +253,9 @@ from intent_reference import start_intents
 from model_builder import comenzar_modelo
 if __name__ == '__main__':
     start_chatbot()
+    model = load_model("modelo.h5")
+    intents = json.loads(open("intents.json").read())
+    palabras = pickle.load(open("palabras.pkl", "rb"))
+    clases = pickle.load(open("clases.pkl", "rb"))
     menu_principal()
 
